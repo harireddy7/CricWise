@@ -1,4 +1,4 @@
-# Cricket Selector
+# CricWise
 
 A personal use project to add players to squad and shortlist them to playing 11
 
