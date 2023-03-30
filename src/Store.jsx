@@ -2,38 +2,11 @@ import React from 'react';
 import { addPlayerTo11, addPlayerToSquad, removePlayerFrom11, removePlayerFromSquad } from './utils';
 
 const initState = {
-  squad: [
-    {
-      id: 'player-12132313',
-      name: 'Hari',
-      role: 'BAT',
-    },
-    {
-      id: 'player-12144345313',
-      name: 'Barry',
-      role: null,
-    },
-    {
-      id: 'player-345',
-      name: 'Clark',
-      role: 'BALL',
-    },
-  ],
+  squad: [],
   playing11: {
     captain: null,
     sub: null,
-    team: [
-      {
-        id: 'player-12132313',
-        name: 'Hari',
-        role: 'BAT',
-      },
-      {
-        id: 'player-12144345313',
-        name: 'Barry',
-        role: null,
-      },
-    ],
+    team: [],
   },
 };
 
