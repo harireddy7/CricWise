@@ -1,8 +1,9 @@
 {
-  "name": "warex",
+  "name": "sortodo",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@chakra-ui/icons": "^2.0.17",
     "@chakra-ui/react": "^2.5.3",
     "@emotion/react": "^11.0.0",
     "@emotion/styled": "^11.0.0",
@@ -11,6 +12,7 @@
     "@testing-library/user-event": "^14.1.0",
     "framer-motion": "^6.2.9",
     "react": "^18.2.0",
+    "react-beautiful-dnd": "^13.1.1",
     "react-dom": "^18.2.0",
     "react-icons": "^3.0.0",
     "react-scripts": "5.0.1",

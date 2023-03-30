@@ -1,0 +1,63 @@
+features:
+    two tabs (playing11 & squad)
+    squad:
+        add all to squad
+        actions:
+            edit
+            delete
+            roles w/o captain
+    playing 11:
+        add by default first 11 to playing 11
+        actions:
+            edit
+            remove from 11
+            roles with captain
+            enable sorting
+        sub:
+          option to add sub in menu
+          icon beside name
+          only 1 sub
+          sub goes to bottom by default
+          sub will have Sub & bat/ball/keep roles
+
+    
+---------------------------------------------------------
+
+addform: input and button
+
+p11:
+    mainlist:
+        - dragdrop
+        - inner dragdrop
+
+    listitem:
+        - sort icon
+        - index, name ✅
+        - captain ✅
+        - role menu ✅
+        - remove ✅
+    rolemenu:
+        - select roles ✅
+        - make/remove captain ✅
+
+squad:
+    mainlist:
+        - mapping team
+        - list item
+    listitem:
+        - index, name ✅
+        - role menu ✅
+        - remove ✅
+    rolemenu:
+        - select roles ✅
+
+common:
+    - mapping team
+    - list item 
+listitem:
+    - index, name ✅
+    - role menu ✅
+    - remove ✅
+rolemenu:
+    - select roles ✅
+
