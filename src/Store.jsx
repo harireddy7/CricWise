@@ -158,17 +158,24 @@ const StoreProvider = ({ children }) => {
 
 
   /** SORT PLAYING11 PLAYERS */
-  const sortTeam = (list, startIndex, endIndex) => {
+  const sortTeam = (tab, startIndex, endIndex) => {
+    const list = tab === 'playing11' ? store.playing11.team : store.squad;
     const result = Array.from(list);
     const [removed] = result.splice(startIndex, 1);
     result.splice(endIndex, 0, removed);
 
-    setStore({
-      playing11: {
-        ...store.playing11,
-        team: result,
-      },
-    });
+    if (tab === 'playing11') {
+      setStore({
+        playing11: {
+          ...store.playing11,
+          team: result,
+        },
+      });
+    } else {
+      setStore({
+        squad: result
+      })
+    }
   };
 
   return (

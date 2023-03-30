@@ -3,17 +3,6 @@ import { Box, Input, Text } from '@chakra-ui/react';
 import { AppContext } from '../Store';
 import { DragHandleIcon, SmallCloseIcon } from '@chakra-ui/icons';
 import PlayerMenu from './PlayerMenu';
-import TextInput from './TextInput';
-const INPUT_STYLES = {
-  maxW: '200px',
-  height: '28px',
-  mb: '3px',
-  fontSize: '12px',
-  textTransform: 'capitalize',
-  border: '1px solid gray.300',
-  _focusVisible: { border: '1px solid', borderColor: 'gray.300' },
-  _focus: { border: '1px solid', borderColor: 'gray.300' },
-};
 
 const SortableItem = ({ player, index, handleInputBlur }) => {
   const [value, setValue] = React.useState(player.name);
@@ -54,7 +43,7 @@ const SortableItem = ({ player, index, handleInputBlur }) => {
         px={4}
         textTransform="capitalize"
       >
-        {/* <Input
+        <Input
           value={value}
           id={`player-input-${player.id}`}
           maxLength={20}
@@ -73,14 +62,6 @@ const SortableItem = ({ player, index, handleInputBlur }) => {
               handleNameChange(e);
             }
           }}
-          onBlur={handleNameChange}
-        /> */}
-        <TextInput
-          value={value}
-          setValue={setValue}
-          id={`input-${player.id}`}
-          styles={INPUT_STYLES}
-          onEnter={handleNameChange}
           onBlur={handleNameChange}
         />
       </Box>

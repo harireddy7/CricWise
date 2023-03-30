@@ -4,9 +4,7 @@ import { DragDropContext, Draggable } from 'react-beautiful-dnd';
 import CustomDroppable from '../Components/DnD/CustomDroppable';
 import Player from './Player';
 
-const DragDrop = ({ players, tab }) => {
-  const handleDragEnd = result => {};
-
+const DragDrop = ({ players, tab, handleDragEnd }) => {
   // handle clicking anywhere inside draggable node
   const handleInputBlur = e => {
     const activeTag = document.activeElement?.tagName;
@@ -24,7 +22,11 @@ const DragDrop = ({ players, tab }) => {
     <DragDropContext onDragEnd={handleDragEnd}>
       <CustomDroppable droppableId="droppable" name="custom-droppable">
         {provided => (
-          <VStack {...provided.droppableProps} ref={provided.innerRef} onClick={handleInputBlur}>
+          <VStack
+            {...provided.droppableProps}
+            ref={provided.innerRef}
+            onClick={handleInputBlur}
+          >
             {players.map((player, index) => (
               <Draggable key={player.id} draggableId={player.id} index={index}>
                 {provided => (
@@ -35,7 +37,12 @@ const DragDrop = ({ players, tab }) => {
                     w="95vw"
                     maxW="600px"
                   >
-                    <Player tab={tab} player={player} serialNum={index + 1} handleInputBlur={handleInputBlur} />
+                    <Player
+                      tab={tab}
+                      player={player}
+                      serialNum={index + 1}
+                      handleInputBlur={handleInputBlur}
+                    />
                   </Box>
                 )}
               </Draggable>
