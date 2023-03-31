@@ -61,7 +61,7 @@ const Player = ({ tab, player, serialNum, handleInputBlur }) => {
             value={value}
             setValue={setValue}
             id={`input-${player.id}`}
-            styles={{ ...INPUT_STYLES,  width: value.length > 5 ? `${(value.length * 11)}px` : '80px' }}
+            styles={{ ...INPUT_STYLES,  width: value.length > 5 ? `${(value.length * 13)}px` : '80px' }}
             onEnter={handleNameChange}
             onBlur={handleNameChange}
           />
