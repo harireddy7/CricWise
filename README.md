@@ -11,7 +11,7 @@ A personal use project to add players to squad and shortlist them to playing 11
 5. Make/Remove someone as a captain
 6. Remove player from playing 11 & delete from squad
 7. Reorder the playing 11 and squad via drag and drop
-
+8. Preserve application data between refreshes
 
 ### Snaps
 

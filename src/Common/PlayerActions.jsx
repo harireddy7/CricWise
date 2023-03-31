@@ -8,6 +8,7 @@ import {
   MenuList,
   Divider,
   Button,
+  useMediaQuery,
 } from '@chakra-ui/react';
 import { AppContext } from '../Store';
 
@@ -15,7 +16,7 @@ const Batter = () => (
   <Image borderRadius="full" w="35px" src="bat.png" alt="bat" />
 );
 const Bowler = () => (
-  <Image borderRadius="full" w="25px" src="ball.png" alt="bat" />
+  <Image borderRadius="full" w="20px" src="ball.png" alt="bat" />
 );
 const AllRounder = () => (
   <Image borderRadius="full" w="35px" src="all.png" alt="bat-ball" />
@@ -25,9 +26,10 @@ const WicketKeeper = () => (
 );
 const Captain = ({ mr }) => (
   <Text
-    minW="30px"
-    fontSize="14px"
-    p="5px"
+    fontSize="0.7rem"
+    minW="24px"
+    h="24px"
+    p="3px"
     textAlign="center"
     backgroundColor="#eeef99"
     borderRadius="50%"
@@ -58,6 +60,8 @@ const PlayerActions = ({ tab, player }) => {
     addRemovePlaying11,
   } = React.useContext(AppContext);
 
+  const [isScreenGT380px] = useMediaQuery('(min-width: 380px)')
+
   const isCaptain = captain === player.id;
 
   const isInPlaying11 = checkPlayerById(playing11.team, player.id);
@@ -78,8 +82,10 @@ const PlayerActions = ({ tab, player }) => {
             as={Button}
             size="sm"
             mr="8px"
-            pl="4px"
-            pr="4px"
+            fontSize="0.7rem"
+            minW="24px"
+            h="24px"
+            p="0 !important"
             borderRadius="50%"
             backgroundColor="#eeef99"
           >
@@ -96,10 +102,12 @@ const PlayerActions = ({ tab, player }) => {
       {tab === 'squad' && (
         <Button
           size="sm"
-          pl="4px"
-          pr="4px"
-          mr="10px"
-          w="35px"
+          minWidth="24px"
+          height='24px'
+          p='2px 0 0'
+          borderRadius='50%'
+          mr="2px"
+          isDisabled={(playing11?.team?.length >= 11 && !isInPlaying11)}
           onClick={() =>
             addRemovePlaying11(player, isInPlaying11 ? 'remove' : 'add')
           }
@@ -107,36 +115,42 @@ const PlayerActions = ({ tab, player }) => {
           {isInPlaying11 ? '-' : '+'}
         </Button>
       )}
-      <MenuButton as={Button} size="sm" pl="4px" pr="4px" w="35px">
-        {player.role ? ROLE_MAPPER[player.role]() : '?'}
-      </MenuButton>
-      <MenuList fontSize="14px">
-        <MenuItem onClick={() => handleRole('BAT')}>
-          <Batter />
-          <Text ml="10px">Batter</Text>
-        </MenuItem>
-        <MenuItem onClick={() => handleRole('BALL')}>
-          <Bowler />
-          <Text ml="20px">Bowler</Text>
-        </MenuItem>
-        <MenuItem onClick={() => handleRole('ALL')}>
-          <AllRounder />
-          <Text ml="10px">All-Rounder</Text>
-        </MenuItem>
-        <MenuItem onClick={() => handleRole('KEEP')}>
-          <WicketKeeper />
-          <Text ml="10px">Wicket Keeper</Text>
-        </MenuItem>
-        {tab === 'playing11' && (
-          <>
-            <Divider />
-            <MenuItem onClick={() => handleRole(isCaptain ? 'UNCAP' : 'CAP')}>
-              <Captain />
-              <Text ml="10px">{isCaptain ? 'Remove' : 'Make'} Captain</Text>
+      {(tab === 'playing11' || (isScreenGT380px && tab === 'squad')) && (
+        <>
+          <MenuButton as={Button} size="sm" pl="4px" pr="4px" w="35px">
+            {player.role ? ROLE_MAPPER[player.role]() : '?'}
+          </MenuButton>
+          <MenuList fontSize="14px">
+            <MenuItem onClick={() => handleRole('BAT')}>
+              <Batter />
+              <Text ml="10px">Batter</Text>
             </MenuItem>
-          </>
-        )}
-      </MenuList>
+            <MenuItem onClick={() => handleRole('BALL')}>
+              <Bowler />
+              <Text ml="20px">Bowler</Text>
+            </MenuItem>
+            <MenuItem onClick={() => handleRole('ALL')}>
+              <AllRounder />
+              <Text ml="10px">All-Rounder</Text>
+            </MenuItem>
+            <MenuItem onClick={() => handleRole('KEEP')}>
+              <WicketKeeper />
+              <Text ml="10px">Wicket Keeper</Text>
+            </MenuItem>
+            {tab === 'playing11' && (
+              <>
+                <Divider />
+                <MenuItem
+                  onClick={() => handleRole(isCaptain ? 'UNCAP' : 'CAP')}
+                >
+                  <Captain />
+                  <Text ml="10px">{isCaptain ? 'Remove' : 'Make'} Captain</Text>
+                </MenuItem>
+              </>
+            )}
+          </MenuList>
+        </>
+      )}
     </Menu>
   );
 };

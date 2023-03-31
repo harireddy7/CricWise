@@ -33,16 +33,6 @@ const Players = ({ tab }) => {
 
   return (
     <VStack spacing="2" w="90vw" p="0.5rem">
-      {tab === 'squad' ? (
-        <Text color="gray" as="i" fontSize="12px">
-          (+/-) Add/Remove from playing 11 , (?) choose player's role , (x)
-          Delete from squad
-        </Text>
-      ) : (
-        <Text color="gray" as="i" fontSize="12px">
-          (?) Choose player's role , (-) Remove from playing 11
-        </Text>
-      )}
       <DragDrop players={tabPlayers} tab={tab} handleDragEnd={handleDragEnd} />
     </VStack>
   );

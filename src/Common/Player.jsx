@@ -6,7 +6,7 @@ import { DragHandleIcon, SmallCloseIcon, MinusIcon } from '@chakra-ui/icons';
 import TextInput from '../Components/TextInput';
 
 const INPUT_STYLES = {
-  maxW: '200px',
+  maxW: '160px',
   height: '28px',
   mb: '3px',
   fontSize: '12px',
@@ -53,14 +53,15 @@ const Player = ({ tab, player, serialNum, handleInputBlur }) => {
           w="calc(100% - 75px)"
           ml={2}
           textAlign="left"
-          px={4}
+          px={2}
+          paddingInlineStart='0'
           textTransform="capitalize"
         >
           <TextInput
             value={value}
             setValue={setValue}
             id={`input-${player.id}`}
-            styles={INPUT_STYLES}
+            styles={{ ...INPUT_STYLES,  width: value.length > 5 ? `${(value.length * 11)}px` : '80px' }}
             onEnter={handleNameChange}
             onBlur={handleNameChange}
           />
@@ -71,8 +72,10 @@ const Player = ({ tab, player, serialNum, handleInputBlur }) => {
         <IconButton
           icon={tab === 'playing11' ? <MinusIcon color='red' /> : <SmallCloseIcon color='red' />}
           size='sm'
-          ml='10px'
-          w="40px"
+          ml='2px'
+          minWidth="24px"
+          height='24px'
+          borderRadius='50%'
           color="red.400"
           onClick={handleRemove}
         />

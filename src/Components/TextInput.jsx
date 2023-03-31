@@ -5,7 +5,7 @@ const TextInput = ({ id, value, setValue, styles, onBlur, onEnter }) => {
 
   const handleChange = e => {
     const val = e.target.value;
-    const regex = /^[a-zA-Z@]{1}[ a-zA-Z0-9#@()/_-]{0,}$/gm;
+    const regex = /^[a-zA-Z@]{1}[ a-zA-Z0-9#@()/_'-]{0,}$/gm;
 
     if (!val || regex.test(val)) {
       setValue(val);
