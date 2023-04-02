@@ -1,5 +1,5 @@
 import React from 'react';
-import { HStack, Text } from '@chakra-ui/react';
+import { HStack } from '@chakra-ui/react';
 import { AppContext } from '../Store';
 import { DragHandleIcon } from '@chakra-ui/icons';
 import ChooseRole from './PlayerActions/ChooseRole';
