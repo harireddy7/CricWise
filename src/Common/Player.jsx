@@ -6,7 +6,6 @@ import {
   Divider,
   HStack,
   Text,
-  useMediaQuery,
 } from '@chakra-ui/react';
 import { AppContext } from '../Store';
 import PlayerActions from './PlayerActions';
@@ -27,7 +26,7 @@ const INPUT_STYLES = {
   _focus: { border: '1px solid', borderColor: 'gray.300' },
 };
 
-const Player = ({ tab, player, serialNum, handleInputBlur }) => {
+const Player = ({ tab, player, serialNum, handleInputBlur, screenLT350px }) => {
   const [value, setValue] = React.useState(player.name);
 
   const {
@@ -38,8 +37,6 @@ const Player = ({ tab, player, serialNum, handleInputBlur }) => {
     updateSquadPlayerRole,
     removePlayer,
   } = React.useContext(AppContext);
-
-  const [screenLT350px] = useMediaQuery('(max-width: 349px)');
 
   const isInPlaying11 = playing11?.team.find(p => p.id === player.id);
   const isPlaying11Full = playing11?.team?.length >= 11;

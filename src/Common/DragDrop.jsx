@@ -1,10 +1,12 @@
 import React from 'react';
-import { Box, VStack } from '@chakra-ui/react';
+import { Box, useMediaQuery, VStack } from '@chakra-ui/react';
 import { DragDropContext, Draggable } from 'react-beautiful-dnd';
 import CustomDroppable from '../Components/DnD/CustomDroppable';
 import Player from './Player';
 
 const DragDrop = ({ players, tab, handleDragEnd }) => {
+  const [screenLT350px] = useMediaQuery('(max-width: 349px)');
+
   // handle clicking anywhere inside draggable node
   const handleInputBlur = e => {
     const activeTag = document.activeElement?.tagName;
@@ -35,14 +37,15 @@ const DragDrop = ({ players, tab, handleDragEnd }) => {
                     ref={provided.innerRef}
                     {...provided.draggableProps}
                     {...provided.dragHandleProps}
-                    w="100%"
-                    maxW="600px"
+                    w='90vw'
+                    maxW="500px"
                   >
                     <Player
                       tab={tab}
                       player={player}
                       serialNum={index + 1}
                       handleInputBlur={handleInputBlur}
+                      screenLT350px={screenLT350px}
                     />
                   </Box>
                 )}
