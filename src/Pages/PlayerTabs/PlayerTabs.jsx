@@ -12,10 +12,10 @@ const PlayerTabs = () => {
         <CustomTab>Squad 🔢</CustomTab>
       </TabList>
       <TabPanels>
-        <TabPanel px={0} maxW='95vw' minHeight='60vh' overflow='hidden' bg='yellow'>
+        <TabPanel px={0} maxW='95vw' minHeight='60vh' overflow='hidden'>
           <Playing11 />
         </TabPanel>
-        <TabPanel px={0} maxW='95vw' minHeight='60vh' overflow='hidden' bg='yellow'>
+        <TabPanel px={0} maxW='95vw' minHeight='60vh' overflow='hidden'>
           <Squad />
         </TabPanel>
       </TabPanels>
