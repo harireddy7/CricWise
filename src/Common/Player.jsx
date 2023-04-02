@@ -49,7 +49,7 @@ const Player = ({ tab, player, serialNum, handleInputBlur, screenLT350px }) => {
   const handleNameChange = e => {
     handleInputBlur(e);
 
-    editPlayerName(player, (value || player).trim());
+    editPlayerName(player, value.trim());
   };
 
   // remove player from squad/p11
@@ -86,12 +86,14 @@ const Player = ({ tab, player, serialNum, handleInputBlur, screenLT350px }) => {
             </Text>
             <TextInput
               value={value}
+              key={player.id}
               setValue={setValue}
               id={`input-${player.id}`}
               styles={{
                 ...INPUT_STYLES,
                 width: value.length > 5 ? `${value.length * 13}px` : '80px',
                 margin: '5px 6px',
+                minW: screenLT350px ? INPUT_STYLES.minW : '120px'
               }}
               onEnter={handleNameChange}
               onBlur={handleNameChange}
