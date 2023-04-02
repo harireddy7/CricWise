@@ -4,7 +4,7 @@ A personal use project to add players to squad and shortlist them to playing 11
 
 ## Features:
 
-1. Add player to squad
+1. Add player to squad (default role as Batter)
 2. Add player to playing 11 from squad
 3. Edit player
 4. Assign a role to player (batter/bowler...)
@@ -15,8 +15,9 @@ A personal use project to add players to squad and shortlist them to playing 11
 
 ### Snaps
 
-##### Playing 11 👇
-<image src="./docs/snaps/playing-11.png" border="2px solid" width="700px">
+##### Main version 👇
+<image src="./docs/snaps/v2-main.png" border="2px solid" width="700px">
 
-##### Squad 👇
-<image src="./docs/snaps/squad.png" border="2px solid" width="700px">
+##### Mini devices version 👇
+<image src="./docs/snaps/v2-mini.png" border="2px solid" width="700px">
+

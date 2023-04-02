@@ -1,17 +1,28 @@
 import React from 'react';
-import { Box, Card, CardBody, IconButton, Text } from '@chakra-ui/react';
+import {
+  Card,
+  CardBody,
+  CardFooter,
+  Divider,
+  HStack,
+  Text,
+  useMediaQuery,
+} from '@chakra-ui/react';
 import { AppContext } from '../Store';
 import PlayerActions from './PlayerActions';
-import { DragHandleIcon, SmallCloseIcon, MinusIcon } from '@chakra-ui/icons';
+import { DragHandleIcon } from '@chakra-ui/icons';
 import TextInput from '../Components/TextInput';
+import ChooseRole from './PlayerActions/ChooseRole';
+import Captain from './PlayerActions/Captain';
 
 const INPUT_STYLES = {
-  maxW: '160px',
+  maxW: '170px',
+  minW: '80px',
   height: '28px',
   mb: '3px',
   fontSize: '12px',
   textTransform: 'capitalize',
-  border: '1px solid gray.300',
+  border: '1px solid transparent',
   _focusVisible: { border: '1px solid', borderColor: 'gray.300' },
   _focus: { border: '1px solid', borderColor: 'gray.300' },
 };
@@ -19,8 +30,19 @@ const INPUT_STYLES = {
 const Player = ({ tab, player, serialNum, handleInputBlur }) => {
   const [value, setValue] = React.useState(player.name);
 
-  const { editPlayerName, addRemovePlaying11, removePlayer } =
-    React.useContext(AppContext);
+  const {
+    playing11,
+    editPlayerName,
+    addRemovePlaying11,
+    updatePlaying11Role,
+    updateSquadPlayerRole,
+    removePlayer,
+  } = React.useContext(AppContext);
+
+  const [screenLT350px] = useMediaQuery('(max-width: 349px)');
+
+  const isInPlaying11 = playing11?.team.find(p => p.id === player.id);
+  const isPlaying11Full = playing11?.team?.length >= 11;
 
   React.useEffect(() => {
     setValue(player.name);
@@ -42,44 +64,90 @@ const Player = ({ tab, player, serialNum, handleInputBlur }) => {
     }
   };
 
+  const handleRole = role => {
+    if (tab === 'playing11') {
+      updatePlaying11Role(player, role);
+    } else {
+      updateSquadPlayerRole(player, role);
+    }
+  };
+
   return (
-    <Card variant="outline" w='100%'>
-      <CardBody p="2px 1rem 2px 10px" display="flex" alignItems="center">
-        <DragHandleIcon w="10px" />
-        <Text color="gray.500" fontSize="15px" ml="10px">
-          {serialNum}
-        </Text>
-        <Box
-          w="calc(100% - 75px)"
-          ml={2}
-          textAlign="left"
-          px={2}
-          paddingInlineStart='0'
-          textTransform="capitalize"
-        >
-          <TextInput
-            value={value}
-            setValue={setValue}
-            id={`input-${player.id}`}
-            styles={{ ...INPUT_STYLES,  width: value.length > 5 ? `${(value.length * 11)}px` : '80px' }}
-            onEnter={handleNameChange}
-            onBlur={handleNameChange}
-          />
-        </Box>
+    <Card
+      variant="outline"
+      w="100%"
+      background={tab === 'squad' && isInPlaying11 ? '#f5f5f0' : 'inherit'}
+    >
+      <CardBody p="2px 5px 2px 0" display="flex" alignItems="center">
+        <HStack justify="space-between" w="100%">
+          <HStack>
+            {!screenLT350px && (
+              <DragHandleIcon fontSize="14px" margin="0 8px" />
+            )}
+            <Text color="gray.500" fontSize="15px" ml="10px">
+              {serialNum}
+            </Text>
+            <TextInput
+              value={value}
+              setValue={setValue}
+              id={`input-${player.id}`}
+              styles={{
+                ...INPUT_STYLES,
+                width: value.length > 5 ? `${value.length * 13}px` : '80px',
+                margin: '5px 6px',
+              }}
+              onEnter={handleNameChange}
+              onBlur={handleNameChange}
+            />
+          </HStack>
 
-        <PlayerActions tab={tab} player={player} />
-
-        <IconButton
-          icon={tab === 'playing11' ? <MinusIcon color='red' /> : <SmallCloseIcon color='red' />}
-          size='sm'
-          ml='2px'
-          minWidth="24px"
-          height='24px'
-          borderRadius='50%'
-          color="red.400"
-          onClick={handleRemove}
-        />
+          <HStack maxW={screenLT350px ? '55px' : '100%'} align="center">
+            {screenLT350px ? (
+              <>
+                {tab === 'playing11' && playing11.captain === player.id && (
+                  <Captain
+                    isCaptain={playing11.captain === player.id}
+                    handleRole={handleRole}
+                  />
+                )}
+                <ChooseRole
+                  role={player.role}
+                  isCaptain={playing11.captain === player.id}
+                  showCaptain={tab === 'playing11'}
+                  handleRole={handleRole}
+                  tab={tab}
+                />
+              </>
+            ) : (
+              <PlayerActions
+                tab={tab}
+                player={player}
+                isInPlaying11={isInPlaying11}
+                isPlaying11Full={isPlaying11Full}
+                screenLT350px={screenLT350px}
+                handleRole={handleRole}
+                handleRemove={handleRemove}
+              />
+            )}
+          </HStack>
+        </HStack>
       </CardBody>
+      {screenLT350px && (
+        <>
+          <Divider />
+          <CardFooter p={2}>
+            <PlayerActions
+              tab={tab}
+              player={player}
+              isInPlaying11={isInPlaying11}
+              isPlaying11Full={isPlaying11Full}
+              screenLT350px={screenLT350px}
+              handleRole={handleRole}
+              handleRemove={handleRemove}
+            />
+          </CardFooter>
+        </>
+      )}
     </Card>
   );
 };

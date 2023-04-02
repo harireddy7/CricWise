@@ -35,11 +35,11 @@ const StoreProvider = ({ children }) => {
   }
 
   /** ADD PLAYER TO SQUAD/PLAYING 11 */
-  const addPlayer = name => {
+  const addPlayer = (name, role) => {
     const newPlayer = {
       id: `player-${Date.now()}`,
       name,
-      role: null,
+      role: role || 'BAT',
     };
     const isPlaying11Full = playingTeam?.length >= 11;
     const updatedSquad = addPlayerToSquad(squad, newPlayer);

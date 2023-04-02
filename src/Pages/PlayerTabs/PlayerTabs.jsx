@@ -6,16 +6,16 @@ import Playing11 from '../Playing11'
 
 const PlayerTabs = () => {
   return (
-    <Tabs defaultIndex={1} align='center' w="95vw" mt="0 !important">
+    <Tabs defaultIndex={1} align='center' w="100%" mt="0 !important">
       <TabList position='sticky' top='0' zIndex='500' backgroundColor='#fff'>
         <CustomTab>Playing 11 ✅</CustomTab>
         <CustomTab>Squad 🔢</CustomTab>
       </TabList>
       <TabPanels>
-        <TabPanel>
+        <TabPanel px={0} maxW='95vw' overflow='hidden'>
           <Playing11 />
         </TabPanel>
-        <TabPanel>
+        <TabPanel px={0} maxW='95vw' overflow='hidden'>
           <Squad />
         </TabPanel>
       </TabPanels>

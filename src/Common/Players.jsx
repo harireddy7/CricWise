@@ -32,7 +32,7 @@ const Players = ({ tab }) => {
   };
 
   return (
-    <VStack spacing="2" w="90vw" p="0.5rem">
+    <VStack w="100%" p="0.5rem 0">
       <DragDrop players={tabPlayers} tab={tab} handleDragEnd={handleDragEnd} />
     </VStack>
   );

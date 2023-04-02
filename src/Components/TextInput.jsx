@@ -16,10 +16,12 @@ const TextInput = ({ id, value, setValue, styles, onBlur, onEnter }) => {
     <Input
       type="text"
       id={id}
+      size='sm'
       maxW="250px"
+      px='8px'
       value={value}
       placeholder="Add Player"
-      maxLength={20}
+      maxLength={15}
       {...styles}
       onChange={handleChange}
       onKeyDown={e => {

@@ -1,0 +1,19 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Satisfy&display=swap');
+
+
+body,
+#root {
+    font-family: 'Poppins', sans-serif;
+}
+
+
+div[data-rbd-draggable-id^=player-]:focus-visible {
+    border: none
+}
+
+div[name="role-menu-button"] > span {
+    display: block;
+    width: 24px;
+}

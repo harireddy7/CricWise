@@ -23,6 +23,7 @@ const DragDrop = ({ players, tab, handleDragEnd }) => {
       <CustomDroppable droppableId="droppable" name="custom-droppable">
         {provided => (
           <VStack
+            spacing={5}
             {...provided.droppableProps}
             ref={provided.innerRef}
             onClick={handleInputBlur}
@@ -34,7 +35,7 @@ const DragDrop = ({ players, tab, handleDragEnd }) => {
                     ref={provided.innerRef}
                     {...provided.draggableProps}
                     {...provided.dragHandleProps}
-                    w="95vw"
+                    w="100%"
                     maxW="600px"
                   >
                     <Player

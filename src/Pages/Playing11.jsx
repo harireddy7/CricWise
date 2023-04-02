@@ -4,7 +4,7 @@ import Players from '../Common/Players';
 
 const Playing11 = () => {
   return (
-    <VStack spacing={3}>
+    <VStack spacing={1}>
       <Text color="gray" as="i" fontSize="12px">
         (?) Choose player's role , (-) Remove from playing 11
       </Text>

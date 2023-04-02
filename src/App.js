@@ -11,7 +11,7 @@ const App = () => {
       <Box textAlign="center" fontSize="xl">
         <Grid minH="100vh" p='0.5rem'>
           {/* <ColorModeSwitcher justifySelf="flex-end" /> */}
-          <VStack spacing={8} height='100%' w='95vw' p={0}>
+          <VStack spacing={8} height='100%' p={0}>
             <StoreProvider>
               <AddPlayerForm />
               <Divider mt='1rem !important' />
