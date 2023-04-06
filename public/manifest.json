@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "CricWise!",
+  "name": "App to select cricket squad and playing 11",
   "icons": [
     {
       "src": "favicon.ico",
