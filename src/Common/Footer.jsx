@@ -3,7 +3,7 @@ import { Box, HStack, Image, Text } from '@chakra-ui/react';
 
 const Footer = () => {
   return (
-    <Box bg="gray.100" p="3">
+    <Box bg="gray.100" p="28px">
       <HStack justifyContent="space-between" maxW="768px" margin="0 auto">
         <Text className="app-title">CricWise!</Text>
         <HStack>
