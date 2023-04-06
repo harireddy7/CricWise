@@ -62,3 +62,26 @@ rolemenu:
     - select roles ✅
 
 Preserve data ✅
+
+
+-------------------------------
+
+instructions:
+    adPlayer:
+        - role will be batter by default
+        - All players are added to squad
+        - first 11 are added to playing11
+    playing11:
+        - edit player name
+        - choose player role
+        - remove player from p11
+        - Make one player as captain
+        - Remove captain
+        - drag drop player to sort order
+
+    Squad:
+        - edit player name
+        - choose player role
+        - add/remove player to/from playing11
+        - delete player permanantly
+        - drag drop player to sort order

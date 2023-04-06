@@ -13,10 +13,10 @@ import {
 import SvgCaptainIcon from '../Svg/SvgCaptainIcon';
 import { ChevronDownIcon } from '@chakra-ui/icons';
 
-const Batter = () => (
-  <Image borderRadius="full" w="24px" src="bat.png" alt="bat" />
+export const Batter = props => (
+  <Image borderRadius="full" w="24px" src="bat.png" alt="bat" {...props} />
 );
-const Bowler = () => (
+export const Bowler = props => (
   <Image
     borderRadius="full"
     w="20px"
@@ -24,13 +24,20 @@ const Bowler = () => (
     marginLeft="4px"
     src="ball.png"
     alt="bat"
+    {...props}
   />
 );
-const AllRounder = () => (
-  <Image borderRadius="full" w="24px" src="all.png" alt="bat-ball" />
+export const AllRounder = props => (
+  <Image borderRadius="full" w="24px" src="all.png" alt="bat-ball" {...props} />
 );
-const WicketKeeper = () => (
-  <Image borderRadius="full" w="24px" src="gloves.png" alt="gloves" />
+export const WicketKeeper = props => (
+  <Image
+    borderRadius="full"
+    w="24px"
+    src="gloves.png"
+    alt="gloves"
+    {...props}
+  />
 );
 
 const ROLE_MAPPER = {

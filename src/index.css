@@ -8,6 +8,11 @@ body,
     font-family: 'Poppins', sans-serif;
 }
 
+.app-title {
+    font-family: 'Satisfy', sans-serif;
+    margin: 0 10px;
+}
+
 
 div[data-rbd-draggable-id^=player-]:focus-visible {
     border: none
@@ -16,4 +21,8 @@ div[data-rbd-draggable-id^=player-]:focus-visible {
 div[name="role-menu-button"] > span {
     display: block;
     width: 24px;
+}
+
+#instruction-modal li {
+    margin: 5px 0;
 }
