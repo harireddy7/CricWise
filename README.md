@@ -6,7 +6,7 @@ A personal use project to add players to squad and shortlist them to playing 11
 
 1. Add player to squad (default role as Batter)
 2. Add player to playing 11 from squad
-3. Edit player
+3. Edit player name
 4. Assign a role to player (batter/bowler...)
 5. Make/Remove someone as a captain
 6. Remove player from playing 11 & delete from squad
@@ -16,8 +16,9 @@ A personal use project to add players to squad and shortlist them to playing 11
 ### Snaps
 
 ##### Main version 👇
-<image src="./docs/snaps/v2-main.png" border="2px solid" width="700px">
+<image src="./docs/snaps/v2-main.png" border="2px solid" width="500px">
+<image src="./docs/snaps/v2-playing11-main.png" border="2px solid" width="500px">
 
 ##### Mini devices version 👇
-<image src="./docs/snaps/v2-mini.png" border="2px solid" width="700px">
+<image src="./docs/snaps/v2-mini.png" border="2px solid" width="300px">
 
