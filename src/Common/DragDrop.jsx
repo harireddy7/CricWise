@@ -1,10 +1,11 @@
 import React from 'react';
-import { Box, useMediaQuery, VStack } from '@chakra-ui/react';
+import { Box, IconButton, useMediaQuery, VStack } from '@chakra-ui/react';
+import { DeleteIcon } from '@chakra-ui/icons';
 import { DragDropContext, Draggable } from 'react-beautiful-dnd';
 import CustomDroppable from '../Components/DnD/CustomDroppable';
 import Player from './Player';
 
-const DragDrop = ({ players, tab, handleDragEnd }) => {
+const DragDrop = ({ players, tab, handleDragEnd, handleClearAll }) => {
   const [screenLT350px] = useMediaQuery('(max-width: 349px)');
 
   // handle clicking anywhere inside draggable node
@@ -30,6 +31,14 @@ const DragDrop = ({ players, tab, handleDragEnd }) => {
             ref={provided.innerRef}
             onClick={handleInputBlur}
           >
+            <Box w="100%" display="flex" justifyContent="flex-end">
+              <IconButton
+                icon={<DeleteIcon />}
+                size="sm"
+                title="clear all"
+                onClick={handleClearAll}
+              />
+            </Box>
             {players.map((player, index) => (
               <Draggable key={player.id} draggableId={player.id} index={index}>
                 {provided => (
@@ -37,7 +46,8 @@ const DragDrop = ({ players, tab, handleDragEnd }) => {
                     ref={provided.innerRef}
                     {...provided.draggableProps}
                     {...provided.dragHandleProps}
-                    w='90vw'
+                    mt={index > 0 ? '15px !important' : '5px !important'}
+                    w="90vw"
                     maxW="500px"
                   >
                     <Player

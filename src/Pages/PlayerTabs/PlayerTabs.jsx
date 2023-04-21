@@ -4,9 +4,13 @@ import CustomTab from './CustomTab';
 import Squad from '../Squad'
 import Playing11 from '../Playing11'
 
+const DEFAULT_TAB = +localStorage.getItem('__CW_TAB__')
+
+const updateTab = index => localStorage.setItem('__CW_TAB__', index)
+
 const PlayerTabs = () => {
   return (
-    <Tabs defaultIndex={1} align='center' w="100%" mt="0 !important">
+    <Tabs defaultIndex={DEFAULT_TAB === 0 ? 0 : 1 } align='center' w="100%" mt="0 !important" onChange={indx => updateTab(indx)}>
       <TabList position='sticky' top='0' zIndex='500' backgroundColor='#fff'>
         <CustomTab>Playing 11 ✅</CustomTab>
         <CustomTab>Squad 🔢</CustomTab>

@@ -16,7 +16,7 @@ import {
   UnorderedList,
   ListItem,
 } from '@chakra-ui/react';
-import { DragHandleIcon } from '@chakra-ui/icons';
+import { DragHandleIcon, MinusIcon, AddIcon, CloseIcon, DeleteIcon } from '@chakra-ui/icons';
 import SvgCaptainIcon from './Svg/SvgCaptainIcon';
 import {
   Batter,
@@ -39,24 +39,6 @@ const RenderRole = () => (
     <AllRounder style={{ display: 'inline', marginBottom: '-4px' }} />
     <WicketKeeper style={{ display: 'inline', marginBottom: '-4px' }} />
   </>
-);
-
-const RenderSymbol = ({ symbol }) => (
-  <div style={{ display: 'inline-block', marginRight: ' 3px' }}>
-    <div
-      style={{
-        width: '24px',
-        height: '24px',
-        borderRadius: '50%',
-        background: '#edf2f7',
-        fontWeight: 'bold',
-        paddingLeft: '8px',
-        paddingTop: '1px',
-      }}
-    >
-      {symbol}
-    </div>
-  </div>
 );
 
 const Instructions = () => {
@@ -108,21 +90,21 @@ const Instructions = () => {
                     <span> icon and remove captain</span>
                   </ListItem>
                   <ListItem>
-                    Click <RenderSymbol symbol="-" />
-                    to remove player from Playing11
+                    Click <MinusIcon className='symbol-lg' /> to remove player from Playing11
                   </ListItem>
                   <ListItem>
                     Hold <DragHandleIcon fontSize="10px" margin="0 2px 3px" />{' '}
                     icon to drag and drop player to sort order
                   </ListItem>
                   <ListItem>
-                    Click <RenderSymbol symbol="+" /> or{' '}
-                    <RenderSymbol symbol="-" />
-                    to add/remove player to/from playing11
+                    Click <AddIcon className='symbol-lg' /> or <MinusIcon className='symbol-lg' /> to add/remove player to/from playing11
                   </ListItem>
                   <ListItem>
-                    Click <RenderSymbol symbol="x" /> to delete player
+                    Click <CloseIcon className='symbol-lg' fontSize='14px' /> to delete player
                     permanantly
+                  </ListItem>
+                  <ListItem>
+                    Click <DeleteIcon className='symbol-lg' /> to clear all players in the tab
                   </ListItem>
                 </UnorderedList>
               </Box>

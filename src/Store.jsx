@@ -1,18 +1,27 @@
 import React from 'react';
-import { addPlayerTo11, addPlayerToSquad, removePlayerFrom11, removePlayerFromSquad } from './utils';
+import {
+  addPlayerTo11,
+  addPlayerToSquad,
+  removePlayerFrom11,
+  removePlayerFromSquad,
+} from './utils';
 
-const LS_KEY = '__CW_APP_DATA__'
-const initLocalJson = localStorage.getItem(LS_KEY)
+const LS_KEY = '__CW_APP_DATA__';
+const initLocalJson = localStorage.getItem(LS_KEY);
 const initLocalData = JSON.parse(initLocalJson);
 
-const initState = {
+const defaultState = {
   squad: [],
   playing11: {
     captain: null,
     sub: null,
     team: [],
   },
-  ...initLocalData
+};
+
+const initState = {
+  ...defaultState,
+  ...initLocalData,
 };
 
 export const AppContext = React.createContext({ ...initState });
@@ -31,8 +40,8 @@ const StoreProvider = ({ children }) => {
 
   const storeAppData = appData => {
     setStore(appData);
-    localStorage.setItem(LS_KEY, JSON.stringify({ ...store, ...appData }))
-  }
+    localStorage.setItem(LS_KEY, JSON.stringify({ ...store, ...appData }));
+  };
 
   /** ADD PLAYER TO SQUAD/PLAYING 11 */
   const addPlayer = (name, role) => {
@@ -66,7 +75,7 @@ const StoreProvider = ({ children }) => {
         });
       }
     }
-  }
+  };
 
   /** EDIT PLAYER NAME */
   const editPlayerName = (player, newName) => {
@@ -126,7 +135,6 @@ const StoreProvider = ({ children }) => {
     }
   };
 
-
   /** UPDATE PLAYER ROLE IN SQUAD */
   const removePlayer = id => {
     const updatedSquad = removePlayerFromSquad(squad, id);
@@ -134,11 +142,9 @@ const StoreProvider = ({ children }) => {
 
     storeAppData({
       squad: updatedSquad,
-      playing11: updatedPlaying11
-    })
+      playing11: updatedPlaying11,
+    });
   };
-
-
 
   /** SORT PLAYING11 PLAYERS */
   const sortTeam = (tab, startIndex, endIndex) => {
@@ -156,8 +162,19 @@ const StoreProvider = ({ children }) => {
       });
     } else {
       storeAppData({
-        squad: result
-      })
+        squad: result,
+      });
+    }
+  };
+
+  /** CLEAR ALL PLAYERS OF SPECIFIED TAB */
+  const handleClearAll = tab => {
+    if (tab === 'playing11') {
+      storeAppData({
+        playing11: defaultState.playing11,
+      });
+    } else if (tab === 'squad') {
+      storeAppData(defaultState);
     }
   };
 
@@ -173,6 +190,7 @@ const StoreProvider = ({ children }) => {
         updatePlaying11Role,
         updateSquadPlayerRole,
         sortTeam,
+        handleClearAll,
       }}
     >
       {children}

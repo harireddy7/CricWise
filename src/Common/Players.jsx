@@ -14,6 +14,7 @@ const getTabPlayers = (store, tab) => {
 const Players = ({ tab }) => {
   const store = React.useContext(AppContext);
   const tabPlayers = getTabPlayers(store, tab);
+  const { handleClearAll } = store;
 
   if (tabPlayers?.length <= 0) {
     return (
@@ -32,8 +33,13 @@ const Players = ({ tab }) => {
   };
 
   return (
-    <VStack w="100%" p="0.5rem 0">
-      <DragDrop players={tabPlayers} tab={tab} handleDragEnd={handleDragEnd} />
+    <VStack w="100%">
+      <DragDrop
+        players={tabPlayers}
+        tab={tab}
+        handleDragEnd={handleDragEnd}
+        handleClearAll={() => handleClearAll(tab)}
+      />
     </VStack>
   );
 };
