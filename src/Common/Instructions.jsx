@@ -15,8 +15,17 @@ import {
   Heading,
   UnorderedList,
   ListItem,
+  useMediaQuery,
+  Text,
 } from '@chakra-ui/react';
-import { DragHandleIcon, MinusIcon, AddIcon, CloseIcon, DeleteIcon } from '@chakra-ui/icons';
+import {
+  DragHandleIcon,
+  MinusIcon,
+  AddIcon,
+  CloseIcon,
+  DeleteIcon,
+  InfoIcon,
+} from '@chakra-ui/icons';
 import SvgCaptainIcon from './Svg/SvgCaptainIcon';
 import {
   Batter,
@@ -43,9 +52,22 @@ const RenderRole = () => (
 
 const Instructions = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const [screenLT320px] = useMediaQuery('(max-width: 320px)');
   return (
     <>
-      <Button onClick={onOpen} fontWeight='normal' bg='#e1e6ef' p={2} fontSize='12px'>How to use!</Button>
+      {!screenLT320px ? (
+        <Text
+          onClick={onOpen}
+          fontWeight="normal"
+          bg="#e1e6ef"
+          p={2}
+          fontSize="12px"
+        >
+          How to use!
+        </Text>
+      ) : (
+        <InfoIcon boxSize={4} onClick={onOpen} />
+      )}
       <Modal
         isCentered
         onClose={onClose}
@@ -56,7 +78,10 @@ const Instructions = () => {
         <ModalContent>
           <ModalHeader>How to use CricWise!</ModalHeader>
           <ModalCloseButton />
-          <ModalBody fontSize={{ sm: '14px', md: '16px' }} id='instruction-modal'>
+          <ModalBody
+            fontSize={{ base: '14px', md: '16px' }}
+            id="instruction-modal"
+          >
             <Stack divider={<StackDivider />} spacing={2}>
               <Box>
                 <Heading mb={1} fontSize="md">
@@ -90,21 +115,25 @@ const Instructions = () => {
                     <span> icon and remove captain</span>
                   </ListItem>
                   <ListItem>
-                    Click <MinusIcon className='symbol-lg' /> to remove player from Playing11
+                    Click <MinusIcon className="symbol-lg" /> to remove player
+                    from Playing11
                   </ListItem>
                   <ListItem>
                     Hold <DragHandleIcon fontSize="10px" margin="0 2px 3px" />{' '}
                     icon to drag and drop player to sort order
                   </ListItem>
                   <ListItem>
-                    Click <AddIcon className='symbol-lg' /> or <MinusIcon className='symbol-lg' /> to add/remove player to/from playing11
+                    Click <AddIcon className="symbol-lg" /> or{' '}
+                    <MinusIcon className="symbol-lg" /> to add/remove player
+                    to/from playing11
                   </ListItem>
                   <ListItem>
-                    Click <CloseIcon className='symbol-lg' fontSize='14px' /> to delete player
-                    permanantly
+                    Click <CloseIcon className="symbol-lg" fontSize="14px" /> to
+                    delete player permanantly
                   </ListItem>
                   <ListItem>
-                    Click <DeleteIcon className='symbol-lg' /> to clear all players in the tab
+                    Click <DeleteIcon className="symbol-lg" /> to clear all
+                    players in the tab
                   </ListItem>
                 </UnorderedList>
               </Box>
