@@ -56,7 +56,7 @@ const Instructions = () => {
         <ModalContent>
           <ModalHeader>How to use CricWise!</ModalHeader>
           <ModalCloseButton />
-          <ModalBody fontSize="12px" id='instruction-modal'>
+          <ModalBody fontSize={{ sm: '14px', md: '16px' }} id='instruction-modal'>
             <Stack divider={<StackDivider />} spacing={2}>
               <Box>
                 <Heading mb={1} fontSize="md">

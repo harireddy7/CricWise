@@ -1,16 +1,20 @@
-
-@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap'); */
 @import url('https://fonts.googleapis.com/css2?family=Satisfy&display=swap');
 
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Pro&display=swap');
 
 body,
-#root {
-    font-family: 'Poppins', sans-serif;
+#root,
+.chakra-modal__content-container,
+.chakra-modal__content-container h2 {
+    /* font-family: 'Poppins', sans-serif; */
+    font-family: 'Crimson Pro', serif;
 }
 
 .app-title {
     font-family: 'Satisfy', sans-serif;
     margin: 0 10px;
+    font-weight: bold;
 }
 
 

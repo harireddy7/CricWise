@@ -50,7 +50,7 @@ const SortableItem = ({ player, index, handleInputBlur }) => {
           maxW="200px"
           height="28px"
           mb="3px"
-          fontSize='12px'
+          fontSize='15px'
           // background={isPlayerExist ? '#f1f1f1' : 'inherit'}
           textTransform="capitalize"
           border="1px solid gray.300"

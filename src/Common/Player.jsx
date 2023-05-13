@@ -19,7 +19,7 @@ const INPUT_STYLES = {
   minW: '80px',
   height: '28px',
   mb: '3px',
-  fontSize: '12px',
+  fontSize: '15px',
   textTransform: 'capitalize',
   border: '1px solid transparent',
   _focusVisible: { border: '1px solid', borderColor: 'gray.300' },
