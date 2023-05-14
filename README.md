@@ -18,6 +18,7 @@ A personal use project to add players to squad and shortlist them to playing 11
 
 ##### Main version (Light mode) 👇
 <image src="./docs/snaps/v2-main.png" border="2px solid" width="500px">
+
 ##### Contrast mode 👇
 <image src="./docs/snaps/v2-contrast-mode.png" border="2px solid" width="500px">
 
