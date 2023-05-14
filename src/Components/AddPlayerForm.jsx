@@ -3,6 +3,8 @@ import { Button, HStack, useMediaQuery, VStack } from '@chakra-ui/react';
 import { AppContext } from '../Store';
 import TextInput from './TextInput';
 import ChooseRole from '../Common/PlayerActions/ChooseRole';
+import { ThemeContext } from '../theme';
+import themeMapper from '../theme/themeMapper';
 
 const initState = { name: '', role: 'BAT' };
 
@@ -11,6 +13,10 @@ const AddPlayerForm = () => {
     (state, next) => ({ ...state, ...next }),
     initState
   );
+
+  const { theme } = React.useContext(ThemeContext);
+  const { AddPlayerForm_input, AddPlayerForm_button } =
+    themeMapper[theme] || {};
 
   const { addPlayer } = React.useContext(AppContext);
 
@@ -31,6 +37,7 @@ const AddPlayerForm = () => {
           setValue={val => setPlayer({ name: val })}
           onEnter={handleAdd}
           id="add-player-input"
+          styles={AddPlayerForm_input}
         />
         <ChooseRole
           asDropdown
@@ -43,6 +50,8 @@ const AddPlayerForm = () => {
             colorScheme="facebook"
             borderRadius="4px"
             onClick={handleAdd}
+            minW="60px"
+            {...AddPlayerForm_button}
           >
             Add
           </Button>

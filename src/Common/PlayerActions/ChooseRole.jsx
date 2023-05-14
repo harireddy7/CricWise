@@ -12,6 +12,8 @@ import {
 } from '@chakra-ui/react';
 import SvgCaptainIcon from '../Svg/SvgCaptainIcon';
 import { ChevronDownIcon } from '@chakra-ui/icons';
+import { ThemeContext } from '../../theme';
+import themeMapper from '../../theme/themeMapper';
 
 export const Batter = props => (
   <Image borderRadius="full" w="24px" src="bat.png" alt="bat" {...props} />
@@ -62,6 +64,19 @@ const MENU_DROPDOWN_PROPS = {
   rightIcon: <ChevronDownIcon />,
 };
 
+const getMenuStyles = (asDropdown, isContrast) => {
+  if (asDropdown) {
+    return {
+      ...MENU_DROPDOWN_PROPS,
+      background: isContrast ? 'transparent' : 'gray.100',
+      border: isContrast ? '1px solid #000' : 'none',
+      boxShadow: isContrast ? '2px 2px #000' : 'none',
+      borderRadius: isContrast ? '0' : '2px',
+    };
+  }
+  return MENU_BUTTON_PROPS;
+};
+
 const ChooseRole = ({
   showCaptain,
   isCaptain,
@@ -69,6 +84,8 @@ const ChooseRole = ({
   asDropdown,
   handleRole,
 }) => {
+  const { isContrast, theme } = React.useContext(ThemeContext);
+  const { ChooseRole_menulist } = themeMapper[theme] || {};
   return (
     <Menu name="role-menu-container">
       <MenuButton
@@ -77,11 +94,16 @@ const ChooseRole = ({
         as={asDropdown ? Button : role ? Box : Button}
         borderRadius={asDropdown ? '2px' : role ? '0' : '50%'}
         background={asDropdown ? 'gray.100' : role ? 'transparent' : 'gray.100'}
-        {...(asDropdown ? MENU_DROPDOWN_PROPS : MENU_BUTTON_PROPS)}
+        {...getMenuStyles(asDropdown, isContrast)}
       >
         {role ? ROLE_MAPPER[role]() : '?'}
       </MenuButton>
-      <MenuList fontSize="14px" name="role-menu-options" zIndex="99999">
+      <MenuList
+        fontSize="14px"
+        name="role-menu-options"
+        zIndex="99999"
+        {...ChooseRole_menulist}
+      >
         <MenuItem onClick={() => handleRole('BAT')}>
           <Batter />
           <Text ml="10px">Batter</Text>

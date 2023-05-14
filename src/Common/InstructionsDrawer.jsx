@@ -1,5 +1,5 @@
 import React from 'react';
-import { InfoIcon } from '@chakra-ui/icons';
+import { InfoOutlineIcon } from '@chakra-ui/icons';
 import {
   Box,
   Divider,
@@ -30,7 +30,7 @@ const InstructionsDrawer = () => {
         cursor="pointer"
         onClick={() => handleClick(isMobile ? 'full' : 'lg')}
       >
-        <InfoIcon title="instructions" color="#385898" />
+        <InfoOutlineIcon title="instructions" ml={2} />
       </Box>
       <Drawer onClose={onClose} isOpen={isOpen} size={size}>
         <DrawerOverlay />

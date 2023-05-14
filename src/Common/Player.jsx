@@ -13,6 +13,8 @@ import { DragHandleIcon } from '@chakra-ui/icons';
 import TextInput from '../Components/TextInput';
 import ChooseRole from './PlayerActions/ChooseRole';
 import Captain from './PlayerActions/Captain';
+import { ThemeContext } from '../theme';
+import themeMapper from '../theme/themeMapper';
 
 const INPUT_STYLES = {
   maxW: '170px',
@@ -28,6 +30,8 @@ const INPUT_STYLES = {
 
 const Player = ({ tab, player, serialNum, handleInputBlur, screenLT350px }) => {
   const [value, setValue] = React.useState(player.name);
+  const { theme } = React.useContext(ThemeContext);
+  const { Player_card } = themeMapper[theme];
 
   const {
     playing11,
@@ -74,6 +78,7 @@ const Player = ({ tab, player, serialNum, handleInputBlur, screenLT350px }) => {
       variant="outline"
       w="100%"
       background={tab === 'squad' && isInPlaying11 ? '#f5f5f0' : 'inherit'}
+      {...Player_card}
     >
       <CardBody p="2px 5px 2px 0" display="flex" alignItems="center">
         <HStack justify="space-between" w="100%">
@@ -93,7 +98,7 @@ const Player = ({ tab, player, serialNum, handleInputBlur, screenLT350px }) => {
                 ...INPUT_STYLES,
                 width: value.length > 5 ? `${value.length * 13}px` : '80px',
                 margin: '5px 6px',
-                minW: screenLT350px ? INPUT_STYLES.minW : '120px'
+                minW: screenLT350px ? INPUT_STYLES.minW : '120px',
               }}
               onEnter={handleNameChange}
               onBlur={handleNameChange}

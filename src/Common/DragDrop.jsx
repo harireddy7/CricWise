@@ -4,9 +4,13 @@ import { DeleteIcon } from '@chakra-ui/icons';
 import { DragDropContext, Draggable } from 'react-beautiful-dnd';
 import CustomDroppable from '../Components/DnD/CustomDroppable';
 import Player from './Player';
+import { ThemeContext } from '../theme';
+import themeMapper from '../theme/themeMapper';
 
 const DragDrop = ({ players, tab, handleDragEnd, handleClearAll }) => {
   const [screenLT350px] = useMediaQuery('(max-width: 349px)');
+  const { theme } = React.useContext(ThemeContext);
+  const { DragDrop_delete } = themeMapper[theme];
 
   // handle clicking anywhere inside draggable node
   const handleInputBlur = e => {
@@ -37,6 +41,7 @@ const DragDrop = ({ players, tab, handleDragEnd, handleClearAll }) => {
                 size="sm"
                 title="clear all"
                 onClick={handleClearAll}
+                {...DragDrop_delete}
               />
             </Box>
             {players.map((player, index) => (
